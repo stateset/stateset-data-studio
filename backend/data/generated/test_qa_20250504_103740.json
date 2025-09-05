@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is the primary purpose of the synthetic-data-kit tool?",
+    "answer": "The primary purpose of the synthetic-data-kit tool is to process documents and create training data for language models."
+  },
+  {
+    "question": "What are the steps involved in generating training data?",
+    "answer": "The steps involved are: ingesting documents, generating QA pairs, curating the pairs for quality, and saving in appropriate formats."
+  },
+  {
+    "question": "How does the curation process work?",
+    "answer": "The curation process evaluates each QA pair for quality using an LLM, assigns a score, and filters out low-quality pairs based on a threshold."
+  },
+  {
+    "question": "What happens to the generated data after it is curated?",
+    "answer": "After curation, the data is saved in appropriate formats for model training."
+  },
+  {
+    "question": "What is synthetic data used for?",
+    "answer": "Synthetic data is used for training, evaluation, and fine-tuning models when real data is unavailable or insufficient."
+  }
+]

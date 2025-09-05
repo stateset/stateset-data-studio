@@ -1,0 +1,60 @@
+api_type: llama
+curate:
+  batch_size: 8
+  inference_batch: 8
+  temperature: 0.1
+  threshold: 7.0
+generation:
+  chunk_size: 4000
+  num_pairs: 25
+  temperature: 0.7
+llama:
+  api_key: YOUR_API_KEY_HERE
+  model: Llama-4-Maverick-17B-128E-Instruct-FP8
+prompts:
+  cot_generation: "You are an expert instructor tasked with generating chain-of-thought\
+    \ examples based on the following context.\nFor each example, pose a question\
+    \ that requires multi-step reasoning, then provide a detailed step-by-step solution.\n\
+    \nContext:\n{context}\n\nInstructions:\n1. Create {num_pairs} chain-of-thought\
+    \ examples\n2. Format each example as:\n   Question: [Your question here]\n  \
+    \ Reasoning:\n   Step 1: [First reasoning step]\n   Step 2: [Second reasoning\
+    \ step]\n   ...\n   Answer: [Final conclusion]\n3. Cover different topics and\
+    \ levels of complexity\n4. Ensure all reasoning is accurate and based solely on\
+    \ the context"
+  qa_generation: "You are an expert instructor tasked with creating high-quality question-answer\
+    \ pairs based on the following context.\nGenerate diverse and challenging questions\
+    \ that test different levels of understanding.\nFor each question, provide a comprehensive\
+    \ answer using only information from the context.\n\nContext:\n{context}\n\nInstructions:\n\
+    1. Create {num_pairs} question-answer pairs\n2. Format each pair as:\n   Q: [Your\
+    \ question here]\n   A: [Your detailed answer here]\n3. Ensure questions cover\
+    \ different aspects and difficulty levels\n4. Keep answers accurate, comprehensive,\
+    \ and based solely on the context\n"
+  qa_rating: "You are a quality evaluator for question-answer pairs. Your task is\
+    \ to rate the quality of each given Q&A pair on a scale of 1-10.\n\nRate based\
+    \ on these criteria:\n1. Relevance - Does the Q&A directly relate to the subject\
+    \ matter?\n2. Accuracy - Is the answer factually correct given the question?\n\
+    3. Completeness - Does the answer thoroughly address all aspects of the question?\n\
+    4. Clarity - Is the question clear and unambiguous? Is the answer well-articulated?\n\
+    5. Educational value - Does the Q&A provide valuable information?\n\nFor each\
+    \ pair, provide:\n1. A numerical rating from 1-10, where 10 is excellent quality\n\
+    2. A brief justification for your rating\n\nHere are the Q&A pairs to evaluate:\n\
+    {pairs}\n\nFormat your response as a valid JSON array with each object containing\
+    \ the original question, answer, your rating, and justification:\n[\n  {\n   \
+    \ \"question\": \"Original question text\",\n    \"answer\": \"Original answer\
+    \ text\",\n    \"rating\": 8,\n    \"justification\": \"Brief explanation of rating\"\
+    \n  },\n  ...\n]"
+  summarization: 'You are an expert summarizer tasked with creating a concise yet
+    comprehensive summary of the following text. Capture the main points, key details,
+    and overall narrative.
+
+
+    Text to summarize:
+
+    {context}
+
+
+    Create a clear, well-structured summary that would help someone understand the
+    essential content without reading the full text.'
+vllm:
+  api_base: http://localhost:8001/v1
+  model: meta-llama/Llama-3.3-70B-Instruct

@@ -1,0 +1,161 @@
+AutonomousCX
+Computer Use CX Agents
+
+COMPUTER USE AGENTS
+
+Useful Agents running on Linux
+
+Contact Reason and 
+
+Social Media 
+
+Platform Onboarding 
+
+Auto-Close Agent
+
+Moderation Agent
+
+AI Agent
+
+Loop through ticket queue
+
+Automatically Hide or Like
+
+Streamlining onboarding by
+
+and assign a contact reason
+
+Social Media Comments
+
+automatically creating rules
+
+and close the ticket.
+
+that are in the queue.
+
+and attributes.
+
+Dropdowns can be tricky.
+
+Focus on Making Sure it
+
+Focus on providing enough
+
+Making sure it can select
+
+does not “Like” a Negative
+
+context to create the right
+
+the dropdown is key.
+
+Comment instead of Hide.
+
+rules and attributes
+
+COMPUTER USE AGENTS
+
+Rules
+
+Attributes
+
+Settings
+
+COMPUTER USE AGENTS
+
+Handling Repetitive Tasks like closing tickets
+Where API is not Available eg. hide the FB Comment
+Multiple Computer Use Agents running at once
+
+python main.py auto-close tickets and moderate social comments
+
+@DATACLASS
+CLASS AGENTCONFIG:
+    """CONFIGURATION FOR EACH AGENT TYPE"""
+    ORG_ID: STR
+    AGENT_ID: STR
+    DESCRIPTION: STR
+    CAPABILITIES: LIST[STR]
+
+screenshots/
+    AUTO_CLOSE/
+      screenshot_auto_close_1
+    SOCIAL_MEDIA/
+      screenshot_2_social_media_2
+    ONBOARDING/
+      screenshot_3_onboarding_3
+
+async def sampling_loop(
+    *,
+    model: str,
+    provider: APIProvider,
+    system_prompt_suffix: str,
+    messages: list[BetaMessageParam],
+    output_callback: Callable[[BetaContentBlockParam], None],
+    tool_output_callback: Callable[[ToolResult, str], None],
+    api_response_callback: Callable[
+        [httpx.Request, httpx.Response | object | None, Exception | None], None
+    ],
+    api_key: str,
+    org_id: str,
+    agent_id: str,
+    agent_type: str,
+    only_n_most_recent_images: Optional[int] = None,
+    max_tokens: int = 4096,
+    max_messages: int = 26,
+) -> list[BetaMessageParam]:
+
+[AUTO_CLOSE] ASSISTANT: I SEE THAT THERE'S A "CONTACT REASON" FIELD WITH A RED
+ASTERISK (*) THAT NEEDS TO BE FILLED. BASED ON THE TICKET CONTENT WHICH
+MENTIONS A DELIVERY ISSUE ("THIS SAYS DELIVERED NOV 4"), I'LL SELECT AN
+APPROPRIATE CONTACT REASON. LET ME CLICK ON THE FIELD TO SEE THE DROPDOWN
+OPTIONS.
+
+### PERFORMING ACTION: MOUSE_MOVE, COORDINATE: [500, 211]
+[AUTO_CLOSE] > TOOL OUTPUT [TOOLU_01R31Z27QKHU7RSCVFHQM4QP]: MOUSE MOVED TO
+X=1350, Y=570
+
+### PERFORMING ACTION: LEFT_CLICK
+[AUTO_CLOSE] > TOOL OUTPUT [TOOLU_01WCYTFPUGRUELCGNNJBZBD8]: PERFORMED
+LEFT_CLICK
+
+### PERFORMING ACTION: SCREENSHOT
+[AUTO_CLOSE] TOOK SCREENSHOT SCREENSHOT_TOOLU_01WT7EYMADWBDJQHDGJPDTTE.PNG
+HTTP REQUEST: POST HTTPS://API.ANTHROPIC.COM/V1/MESSAGES?BETA=TRUE "HTTP/1.1
+200 OK"
+
+[AUTO_CLOSE] ASSISTANT: I SEE A DROPDOWN MENU WITH VARIOUS OPTIONS. SINCE
+THIS IS ABOUT A DELIVERY THAT WAS MARKED AS DELIVERED BUT THE CUSTOMER
+HASN'T RECEIVED IT, I'LL SELECT "DELIVERED NOT RECEIVED".
+
+### PERFORMING ACTION: MOUSE_MOVE, COORDINATE: [547, 357]
+[AUTO_CLOSE] > TOOL OUTPUT [TOOLU_01PGDA8PI91EBVCW9AWMSFOX]: MOUSE MOVED TO
+X=1477, Y=964
+
+### PERFORMING ACTION: LEFT_CLICK
+[AUTO_CLOSE] > TOOL OUTPUT [TOOLU_01UM38NUWY3WIAPS6W6S3TFN]: PERFORMED
+LEFT_CLICK
+
+### PERFORMING ACTION: SCREENSHOT
+[AUTO_CLOSE] TOOK SCREENSHOT SCREENSHOT_TOOLU_017D3ZCLGQBEWGMTWPAYPCUK.PNG
+^C^C^C^C^C^C^C^CHTTP REQUEST: POST HTTPS://API.ANTHROPIC.COM/V1/MESSAGES?
+BETA=TRUE "HTTP/1.1 200 OK"
+
+[AUTO_CLOSE] ASSISTANT: NOW THAT I'VE SELECTED THE CONTACT REASON AS
+"DELIVERED NOT RECEIVED", I CAN PROCEED TO CLOSE THE TICKET. I'LL CLICK
+THE CLOSE BUTTON WITH THE CHECK MARK.
+### PERFORMING ACTION: MOUSE_MOVE, COORDINATE: [400, 178]
+
+[SOCIAL_MEDIA] ASSISTANT: FROM REVIEWING THE CONVERSATIONS, I CAN SEE THAT
+THESE APPEAR TO BE MOSTLY PRODUCT INQUIRIES AND CUSTOMER SERVICE
+INTERACTIONS RATHER THAN NEGATIVE COMMENTS THAT NEED TO BE HIDDEN.
+
+SINCE NONE OF THESE CONVERSATIONS APPEAR TO BE NEGATIVE COMMENTS THAT
+REQUIRE MODERATION, I DON'T NEED TO USE THE HIDE BUTTON AT THIS TIME. THE
+COMMENTS ARE CONSTRUCTIVE AND PRODUCT-FOCUSED.
+
+[AUTO_CLOSE] TOOK SCREENSHOT SCREENSHOT_TOOLU_01CCHCLSRCVUKED89KPRPDTW.PNG
+HTTP REQUEST: POST HTTPS://API.ANTHROPIC.COM/V1/MESSAGES?BETA=TRUE
+"HTTP/1.1 200 OK"
+
+

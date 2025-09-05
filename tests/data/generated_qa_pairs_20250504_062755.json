@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is the primary advantage of using synthetic data in machine learning applications where sensitive information is a concern?",
+    "answer": "The primary advantage is privacy protection, as synthetic data doesn't contain sensitive personal information, making it useful for sharing and collaboration without privacy concerns."
+  },
+  {
+    "question": "How can synthetic data be used to improve the performance of machine learning models when real-world data is limited?",
+    "answer": "Synthetic data can be used for data augmentation, supplementing limited datasets to improve model performance and reduce bias."
+  },
+  {
+    "question": "Compare and contrast the use of Generative Adversarial Networks (GANs) and Variational Autoencoders (VAEs) for generating synthetic data.",
+    "answer": "Both GANs and VAEs are neural network-based approaches used to generate synthetic data. GANs learn to generate data that is indistinguishable from real data through an adversarial process, while VAEs learn the underlying distribution of data and generate new samples based on this learned distribution. While both can produce high-quality synthetic data, GANs are often used when the goal is to generate highly realistic data, and VAEs are useful for understanding and manipulating the underlying data distribution."
+  },
+  {
+    "question": "What is one of the key challenges in generating synthetic data that accurately represents real-world scenarios?",
+    "answer": "One key challenge is ensuring that the generated data accurately represents real-world patterns while maintaining statistical fidelity and preserving privacy."
+  },
+  {
+    "question": "Describe a scenario where Agent-Based Modeling could be particularly useful for generating synthetic data.",
+    "answer": "Agent-Based Modeling could be particularly useful for generating synthetic data in scenarios that involve simulating the behavior of individual entities or 'agents' based on defined rules and interactions. For example, modeling traffic flow by simulating the behavior of individual vehicles and their interactions with other vehicles and the environment. This can generate synthetic data on traffic patterns, which can be useful for testing and optimizing traffic management systems."
+  }
+]

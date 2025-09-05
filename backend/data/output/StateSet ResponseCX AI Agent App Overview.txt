@@ -1,0 +1,173 @@
+StateSet ResponseCX
+
+ResponseCX AI Powered CX & Ops
+ResponseCX Agent fully automates and resolves customer service requests based 
+on your companyʼs knowledge base and real-time commerce data.
+
+3.28 hrs 
+
+First Response Time   
+
+5 seconds
+
+6.84 hrs 
+
+Resolution Time
+
+30 seconds
+
+StateSet ResponseCX
+
+Chat
+Workflow
+
+Subscription
+Workflow
+
+RAG x LLM x CX
+
+GPT4o
+
+Claude
+
+Llama3
+
+Gemini
+
+Knowledge
+
+Memories 
+
+Rules
+
+Attributes
+
+Examples
+
+Actions 
+
+Macros
+
+FAQs
+
+Product
+
+Blogs
+
+Articles
+
+StateSet ResponseCX
+
+Hi Dom,
+
+intro
+
+Thank you for reaching out. My name is Gloria, I am a Customer Care Agent here at 
+ARMRA Colostrum. I will be personally working with you today.
+
+I understand you'd like to cancel your order and subscription. I've checked your 
+order #1408919 and it appears that it has already been fulfilled and shipped. 
+Unfortunately, once an order has been processed and fulfilled, we are unable to 
+cancel it. However, you can find more information about our shipping policy and how 
+to proceed with a return if necessary here: Shipping 
+Policy](https://tryarmra.com/pages/help?hcUrl=%2Fen-US%2Fwhat-is-your-shippin
+g-policy-101474).
+
+cancel_order
+
+Regarding your subscription, I see that it has already been cancelled. If there's 
+anything specific that prompted your decision or if there's anything else I can assist 
+you with, please let me know. Your feedback is valuable to us.
+
+cancel_sub
+
+Please let me know if you have any other questions I can help answer.
+
+In health,
+
+Gloria
+ARMRA Colostrum Customer Care
+
+ eMail signature
+
+ 
+Automate CX Responses and Outcomes
+✅ Knowledge Base Generative QA 
+Question / Answering) on Product 
+Questions and More! 
+
+✅ Automate Ticket Resolution: 
+Customer Questions in eMail, Chat, IG 
+DMs, FB Messenger AND with Filters 
+based on Tags
+
+✅ Automate Post-Purchase 
+Outcomes: Create Return, Cancel 
+Shopify Order, Add Shopify Tags, 
+Cancel Subscription Order, Cancel 
+Subscription
+
+StateSet ResponseCX
+
+Our Featured AI Agent: Gloria
+
+Quantitative (Dec 24ʼ - Feb 25ʼ)
+
+● 15% of Total Ticket Volume 
+● 52% One Touch Tickets
+● 4.58 CSAT
+● First Response Time: 1m 26s
+● 5,000 tickets handled
+● Revenue Generated 10X15X ROI
+
+Qualitative (Dec 25ʼ - Feb 25ʼ)
+
+● Reviewed tickets: 2,137
+● Resolution completeness rate: 99.5%
+● Accuracy: 5
+● Internal compliance: 5
+● Efficiency: 5
+● Communication: 4.95
+● Language proficiency: 4.98
+● Brand voice: 5
+
+StateSet
+
+ 
+Available on the Gorgias App Store
+
+StateSet ResponseCX
+
+ 
+StateSet ResponseCX
+
+Timelines | 3 Week Onboarding
+
+2 Week Onboarding w/ 30 Day Free Trial + 1 Week of QA
+
+ReSponse Go Live
+
+Days 12
+● Knowledge
+● Attributes
+● Rules
+● Actions
+● Integrations
+
+Days 35
+● ReSponse QA
+● Filters
+● Channels
+● Testing
+
+Days 67
+● Go Live in Gorgias 
+● Ticket Monitoring
+● Ongoing 
+
+Fine-tuning of the 
+Agent via Slack
+
+StateSet ResponseCX
+
+

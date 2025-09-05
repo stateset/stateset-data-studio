@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is the primary advantage of using synthetic data in machine learning applications where sensitive information is a concern?",
+    "answer": "The primary advantage is privacy protection, as synthetic data does not contain sensitive personal information, making it useful for sharing and collaboration without privacy concerns."
+  },
+  {
+    "question": "How can synthetic data help improve the performance of machine learning models when real-world data is limited?",
+    "answer": "Synthetic data can supplement limited datasets through data augmentation, helping to improve model performance and reduce bias."
+  },
+  {
+    "question": "What is the role of Generative Adversarial Networks (GANs) in synthetic data generation?",
+    "answer": "GANs are neural networks that learn to generate data that is indistinguishable from real data, making them a technique for creating synthetic data."
+  },
+  {
+    "question": "What is one of the challenges faced by synthetic data generation, particularly in relation to its representation of real-world data?",
+    "answer": "One challenge is ensuring that the generated data accurately represents real-world patterns, maintaining statistical fidelity while preserving privacy."
+  },
+  {
+    "question": "How does Agent-Based Modeling contribute to synthetic data generation?",
+    "answer": "Agent-Based Modeling simulates the behavior of individual agents to generate data based on defined rules and interactions, providing a method for creating synthetic data that mimics complex systems."
+  }
+]

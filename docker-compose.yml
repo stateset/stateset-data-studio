@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs
+      - ./backend:/app/backend
+    environment:
+      - HF_TOKEN=${HF_TOKEN}
+      - VLLM_API_BASE=http://mock_vllm:8001/v1
+      - VLLM_MODEL=meta-llama/Llama-3.3-70B-Instruct
+    depends_on:
+      - mock_vllm
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+      
+  mock_vllm:
+    build:
+      context: .
+      dockerfile: Dockerfile.mock_vllm
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./mock_vllm_server.py:/app/mock_vllm_server.py

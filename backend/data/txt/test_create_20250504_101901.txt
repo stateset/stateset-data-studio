@@ -1,0 +1,12 @@
+
+    StateSet Data Studio is a powerful tool for generating synthetic data.
+    
+    Key features:
+    - Import data from various sources
+    - Generate Q&A pairs using AI
+    - Curate data with quality controls
+    - Export in different formats
+    
+    The system has a frontend built with React and a backend using FastAPI.
+    The synthetic data generation uses LLMs to create high-quality training data.
+    

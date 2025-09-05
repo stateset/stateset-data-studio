@@ -1,0 +1,105 @@
+{
+  "summary": "### Summary of StateSet Analyst Presentation\n\n**Company Overview**\n\nStateSet is an AI-powered commerce operations platform designed to address the $500 billion \"Ops Tax\" crisis in the Direct-to-Consumer (DTC) market. The company aims to become the category leader in AI-powered commerce operations.\n\n**The Problem**\n\nThe DTC industry faces significant operational challenges, including:\n\n* 20%+ margin erosion\n* 30+ disconnected tools\n* 60%+ time spent on manual tasks\n* Linear cost scaling\n\n**StateSet's Solution**\n\nStateSet's iCommerce platform offers a unified solution to these challenges through:\n\n1. **AI-native, self-learning agents** that automate commerce operations.\n2. **Integration & Data Layer** that unifies front/back office and data silos.\n3. **Outcome-based pricing model** that ensures customers only pay for successful outcomes.\n\n**Key Features and Benefits**\n\n* **Intelligent, Integrated, Instant, Invisible, Iterative, and Impactful** platform architecture.\n* **100M+ Commerce Signals** proprietary dataset for enhanced AI capabilities.\n* **Unified Agentic Platform** that is not limited to point solutions.\n* **Outcome-Based Pricing** with no seats or licenses.\n\n**Revenue Model and Performance**\n\n* **Outcome contracts** with customers paying $30K-$100K ARR per company based on value delivered.\n* **10-15x ROI in 100 Days**, 85% Cost Reduction, and 90% Faster Time-to-Value.\n* Current ARR is $250K with 130% Net Revenue Retention and 140% YoY Revenue Growth.\n\n**Growth Strategy**\n\n1. **Direct Sales**: Targeted outreach to DTC and B2B brands with $10M-$100M revenue.\n2. **Channel Partnerships**: Strategic alliances with agencies, consultancies, and platform partners.\n3. **Market Engineering**: Establishing \"iCommerce\" as the new category standard through thought leadership and customer success stories.\n\n**Milestones and Projections**\n\n* Q4 2025: $750K ARR, 25 reference customers.\n* Q2 2026: $3M ARR, Series A readiness, and cash-flow positive.\n\n**Risk Management**\n\nStateSet has identified potential risks, including enterprise competition, market adoption, technical execution, and talent acquisition. The company has developed mitigation strategies for each risk, such as leveraging its commerce-specific AI and deep integrations to counter enterprise competition.\n\n**Conclusion**\n\nStateSet is poised to revolutionize the $200 billion iCommerce market by providing a cutting-edge, AI-powered commerce operations platform. With a strong leadership team, robust growth strategy, and proactive risk management, StateSet is on track to achieve its vision of becoming the category king in the iCommerce market.",
+  "qa_pairs": [
+    {
+      "question": "What is the mission of StateSet?",
+      "answer": "StateSet's mission is to be the first iCommerce Engine, providing AI Labor for a $200B Market."
+    },
+    {
+      "question": "What is the \"Ops Tax\" that StateSet is trying to solve?",
+      "answer": "The \"Ops Tax\" refers to the $500B problem that is killing DTC growth through 20%+ margin erosion, 30+ disconnected tools, 60%+ time on manual tasks, and linear cost scaling."
+    },
+    {
+      "question": "Who are the co-founders of StateSet?",
+      "answer": "The co-founders of StateSet are Dom Steil (CEO) and Vikal Kapoor."
+    },
+    {
+      "question": "What is Dom Steil's background?",
+      "answer": "Dom Steil is an AI Entrepreneur and Technologist with 12+ years of AI development experience. He has built AI agents processing 100M+ interactions and previously led AI initiatives at APTTUS (MAX)."
+    },
+    {
+      "question": "What is the Total Addressable Market (TAM) for StateSet's iCommerce platform?",
+      "answer": "The Total Addressable Market (TAM) for StateSet's iCommerce platform is $200B."
+    },
+    {
+      "question": "How does StateSet's iCommerce platform differentiate itself from competitors?",
+      "answer": "StateSet's iCommerce platform differentiates itself through its highest degree of AI agentic automation, broadest commerce workflow coverage, and outcome-based pricing model."
+    },
+    {
+      "question": "What are the three secular waves that are driving the need for StateSet's iCommerce platform?",
+      "answer": "The three secular waves driving the need for StateSet's iCommerce platform are AI Agent Adoption, DTC Scaling Crisis, and Tech Investment Window."
+    },
+    {
+      "question": "What is the pricing model for StateSet's iCommerce platform?",
+      "answer": "StateSet's pricing model is based on outcome contracts, with customers paying between $30K-$100K ARR per company based on the value delivered."
+    },
+    {
+      "question": "What is the value proposition offered by StateSet's iCommerce platform?",
+      "answer": "StateSet's iCommerce platform offers a 10-15x ROI in 100 Days, 85% Cost Reduction vs Traditional BPO & SaaS, and 90% Faster Time-to-Value."
+    },
+    {
+      "question": "What type of companies does StateSet serve?",
+      "answer": "StateSet serves DTC and B2B brands with $10M-$200M revenue experiencing operational scaling challenges."
+    },
+    {
+      "question": "Can you name some of the companies that StateSet has served or partnered with?",
+      "answer": "Some of the companies that StateSet has served or partnered with include Sincerely Yours, Elix Healing, HydraPak, Bartesian, Mienne No Makeup, YSE Beauty, Digital River, Nogin, Oracle, NVIDIA, and Shopify."
+    },
+    {
+      "question": "What is the growth strategy for StateSet?",
+      "answer": "StateSet's growth strategy includes Direct Sales, although the exact percentage is not specified beyond one channel being 20%."
+    },
+    {
+      "question": "What are the key layers of StateSet's iCommerce Platform Architecture?",
+      "answer": "The key layers of StateSet's iCommerce Platform Architecture are the User Experience Layer, Agentic Orchestration Layer, and Integration & Data Layer."
+    },
+    {
+      "question": "What is the target revenue range for the brands that StateSet is focusing on?",
+      "answer": "StateSet is targeting DTC and B2B brands with revenue between $10M and $100M that are experiencing operational scaling challenges."
+    },
+    {
+      "question": "What is the expected net revenue retention for StateSet's channel partnerships?",
+      "answer": "The expected net revenue retention for StateSet's channel partnerships is 130% or more."
+    },
+    {
+      "question": "What is the \"Adoption Sequence\" strategy employed by StateSet, and what are the expected expansion rates at different stages?",
+      "answer": "The \"Adoption Sequence\" is a three-stage strategy where StateSet first lands with CX Automation, achieving 62% automation and 10x ROI in 100 days. Then, it expands to Order Management & Fulfillment within 30-60 days with a 40%+ expansion rate, and finally to Subscription & Retention Operations within 90-120 days with a 60%+ expansion rate."
+    },
+    {
+      "question": "What is StateSet's current ARR, and what is the year-over-year revenue growth?",
+      "answer": "StateSet's current ARR is $250K, and the year-over-year revenue growth is 140%."
+    },
+    {
+      "question": "What are the key milestones that StateSet aims to achieve by Q4 2025?",
+      "answer": "By Q4 2025, StateSet aims to achieve $750K ARR and have 25 reference customers."
+    },
+    {
+      "question": "What is the mitigation strategy for the risk of enterprise competition in the agentic AI space?",
+      "answer": "StateSet's mitigation strategy for enterprise competition includes having commerce-specific AI with over 100M interactions (a 5-year head start), deep integrations creating significant switching costs, and an accelerated integration ecosystem expansion."
+    },
+    {
+      "question": "What is the risk associated with talent acquisition, and how is StateSet mitigating it?",
+      "answer": "The risk associated with talent acquisition is high due to intense competition for AI engineering talent. StateSet is mitigating this risk by leveraging the founders' connections at top companies like Salesforce, Shopify, and J.P. Morgan, offering generous equity packages tied to clear growth milestones, and adopting a remote-first approach to expand the global talent pool."
+    },
+    {
+      "question": "What is StateSet's vision for the future, and what is the target market size?",
+      "answer": "StateSet's vision is to establish itself as the category king for the $200B iCommerce market by creating a new standard for AI-powered commerce operations."
+    },
+    {
+      "question": "How does StateSet plan to achieve market leadership, and what are the key strategic goals?",
+      "answer": "StateSet plans to achieve market leadership by establishing iCommerce as a new category standard, scaling to 150+ commerce integrations, building network effects through a partner ecosystem, and achieving $3M ARR and Series A readiness."
+    },
+    {
+      "question": "What is the expected cash flow position of StateSet by Q2 2026?",
+      "answer": "StateSet expects to be cash-flow positive by Q2 2026."
+    },
+    {
+      "question": "How has StateSet allocated its funding across different areas?",
+      "answer": "StateSet has allocated 45% of its funding to engineering, 30% to sales and GTM, 15% to operations, and 10% to G&A."
+    },
+    {
+      "question": "What is the runway for StateSet to become cash-flow positive, and what was the amount raised in the seed round?",
+      "answer": "StateSet has an 18-month runway to become cash-flow positive by Q2 2026, and it raised $4M in the seed round."
+    }
+  ]
+}

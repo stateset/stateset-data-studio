@@ -1,0 +1,13 @@
+{
+  "summary": "This is a test summary for debugging QA generation.",
+  "qa_pairs": [
+    {
+      "question": "What is this file for?",
+      "answer": "This is a test QA pair file to diagnose file creation issues in the synthetic-data-studio."
+    },
+    {
+      "question": "When was this file created?",
+      "answer": "This file was created on 20250504_103852 as part of the diagnostic process."
+    }
+  ]
+}

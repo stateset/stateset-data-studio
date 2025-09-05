@@ -1,0 +1,583 @@
+StateSet | Autonomous Commerce Operations
+
+Team
+Agentic Commerce OS for 
+High-Growth DTC Brands
+
+StateSet is an Applied AI software company building the agentic platform 
+for commerce operations. At the heart of our ethos is the conviction that 
+DTC brands necessitate a revolutionary Autonomous Commerce 
+Operating System to streamline, automate, and scrutinize their business 
+processes.
+
+StateSet
+
+Problem
+
+• Fragmented Tools: Existing solutions 
+
+10M GMV e-commerce brands struggle with 
+complex operations, rising costs, and a 
+patchwork of tools…
+
+force brands to juggle multiple apps and 
+databases, draining time and 
+profitability.
+
+• Manual Labor and Cost Pressures → 
+Labor shortages and wage inflation 
+demand automated solutions that can 
+handle everything from subscription 
+management to warehouse logistics.
+
+• Stagnant Legacy Systems: Standard 
+
+CRMs or ERPs can’t adapt to the 
+fast-changing demands of $10M+ GMV 
+brands, let alone enterprise retailers with 
+hundreds of millions in annual sales.
+
+StateSet
+
+held together with gum 
+and bailing wire…
+
+Our Solution: Agentic OS for Commerce
+
+Autonomous Operating System powered by AI Agents
+
+● End-to-end agentic orchestration across logistics, 
+
+customer experience and operations.
+
+● Real-time intelligence that proactively identifies and 
+
+fully resolves issues (order cancellations, 
+subscription changes, replacements, refunds, etc.)
+
+Outcome-Based Model
+
+● Brands pay a platform fee and for outcomes 
+delivered (e.g., orders updated, subscriptions 
+changed), aligning fees with actual ROI.
+
+Platform + Marketplace
+
+● Core StateSet modules plus a growing AI Worker 
+
+marketplace, where developers can build 
+specialized Agents for specific use cases.
+
+● Leverage deep integrations with Shopify, NetSuite 
+
+and other leading commerce solutions.
+
+StateSet
+
+ 
+Our Featured AI Agent: Gloria
+
+Quantitative (Dec 24ʼ - Feb 25ʼ)
+
+● 15% of Total Ticket Volume 
+● 52% One Touch Tickets
+● 4.58 CSAT
+● First Response Time: 1m 26s
+● 5,000 tickets handled
+● $30K in Revenue Generated 10X15X ROI
+
+Qualitative (Dec 25ʼ - Feb 25ʼ)
+
+● Reviewed tickets: 2,137
+● Resolution completeness rate: 99.5%
+● Accuracy: 5
+● Internal compliance: 5
+● Efficiency: 5
+● Communication: 4.95
+● Language proficiency: 4.98
+● Brand voice: 5
+
+StateSet
+
+ 
+Agentic Commerce Market Ripe for Disruption
+
+Market Opportunity
+
+● 5,000 Shopify Plus brands (Health & Wellness, 
+
+Beauty, CPG, Consumer Electronics) at $10M GMV 
+alone could yield hundreds of millions in ARR.
+● Extending to enterprise & B2B commerce globally 
+unlocks tens of thousands of businesses and a 
+multi‐billion‐dollar revenue opportunity.
+
+Worldwide Adoption
+
+● E-commerce is growing 20%+ annually in the 
+
+$10M$1B GMV segment, and AI Agent / Digital Labor 
+acceptance is accelerating across all industries.
+
+Future Expansion
+
+● StateSet can eventually serve not only 
+
+direct-to-consumer brands but also major retailers, 
+marketplaces, and B2B distributors—powering 
+mission-critical automations worldwide.
+
+StateSet
+
+$60B
+
+$25B
+
+$7.6B
+
+Commerce TAM, SAM, SOM for AI
+
+“Hereʼs a way to think about the market size of AI. US 
+labor costs are $11T. If a company pays 2% of 
+headcount expenses to get a 1050% productivity gain 
+with AI, thatʼs $200B. The US enterprise software 
+market today is around $150200B. So AI doubles that 
+just in the base case.ˮ
+
+“By 2034, AI Agents will replace 800M jobs and add 
+$19.9T to the Global Economy.ˮ 
+
+Autonomous Commerce Operating System
+
+StateSet
+
+Tech: StateSetʼs Agentic Stack
+
+Agentic Function Calling
+
+● Deterministic Workflow Engine + Generative LLM 
+
+with prompt abstraction framework
+
+● RAG with Knowledge Base VDB, Rules, Examples, 
+
+Brand Attributes, Schedulers and Actions
+
+● Constellation of SOTA Language Models: GPT4, 
+Claude Sonnet, Gemini, Llama3, Grok, Deepseek
+
+     Adoption and Evals
+
+● Agent Analytics based on Responses and Functions
+● Evals Framework for fine-tuning responses and 
+monitoring the success % of outcomes resolved
+
+      Reasoning Expansion
+
+● StateSet is creating vector embeddings on CX and 
+
+Commerce Data and using Reasoning models such as 
+o3 to create Generative Reports for Founders, Head of 
+Commerce, Head of CX & Head of Operations
+
+StateSet
+
+Tech: Best In Class OSS hosted on GKE
+
+3 Factor App GraphQL, 
+Events, Serverless APIs) 
+Architecture
+
+• Best-in-Class UX | Next.js & Tailwind 
+
+• Blazing fast graphQL API by Hasura
+
+• Function calling with OpenAI GPT4
+
+• Temporal workflow orchestration
+
+• Kubernetes Infrastructure, Argo CI/CD
+
+StateSet
+
+ 
+Tech: StateSet Cloud Platform
+
+StateSetʼs proprietary serverless devops platform enables scale to 1000ʼs of Agents.
+
+✅ Automatic CI/CD Deployment
+
+✅ Secrets Management 
+
+✅ Scalability via Serverless Hosting 
+
+✅ Seamless Integration with Git
+
+✅ Cost-Effective Infrastructure
+
+✅ Integrated Client Libraries with 
+JWT Authentication 
+
+StateSet
+
+Agentic Business Model
+
+Outcomes-as-a-Service, Tied to GMV and AI Worker ROI.
+
+Pricing Tiers:
+
+1. Flat-Rate Outcome Plans: AI Workers priced monthly for outcomes delivered.
+
+a. Starting at $1,520 per month for StateSet Platform Access
+
+2. Custom AI Worker Dev: Enterprise-level solutions for high-ROI use cases.
+3. Marketplace Fees: Self-serve AI Worker marketplace for add-on modules.
+
+Current ARPA $20K ARR.
+Target ARPA $350K ARR 30K MRR) once brands scale past $100M GMV.
+
+Expansion: Modular pricing for additional AI Agents with Autonomous Outcomes 
+based Pricing Model $1.50/AO (pre-pay) & $2/AO
+
+StateSet
+
+Traction & Growth
+
+1. ARR: $560K
+2. YoY Growth: 140%
+3. Customers: 16 total 12 ResponseCX, 4 StateSet One)
+4. Net Dollar Retention: 126.7%
+5. Gross Margin: 80.3%
+6. CAC Payback: 23 months
+7. LTV/CAC: 181
+8. Magic Number: 1.4
+
+Powering 70M GVM 350% YoY 
+and 6M in ARR for customer 
+900% YoY, 20,000 RMA.  
+
+1M
+
+Launched ReSponse AI 
+Agent on GPT4. Signed 
+multiple 8 & 9 Figure 
+brands. Powering 500M 
+in GMV 500% YoY.
+
+3 New Customer Segments: 
+Warehouse, 3PLs, Developers.
+
+400K
+
+Powering 20M GVM 
+and 500k ARR for 
+DTC Merchants.
+
+225k
+
+80k
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Founded
+
+11/23/2019
+
+Began Building Ops 
+Network for DTC 
+Merchants & 3PLs.
+
+60k
+
+2019
+
+2020
+
+StateSet
+
+“ARMRA is spearheading a new era in 
+both personal health management 
+and customer experience, where 
+next-generation AI technology meets 
+transformational health.ˮ 
+
+- Sandy Sloan Head of CX at ARMRA
+
+Testimonials
+
+StateSet
+
+Standing Apart in a Crowded Landscape
+
+SaaS OS
+
+Agentic OS
+
+Legacy
+
+Agency
+
+SaaS Infra
+
+AI Infra
+
+StateSet
+
+Why StateSet Will Win
+
+Proven Tech, Proprietary AI Worker Protocols, and Strong GTM.
+
+Proprietary AI Workers built on Robust Infrastructure, Integrations and Intelligence
+
+● Deterministic + generative models ensure reliability and adaptability, handling high-volume tasks seamlessly.
+
+Platform Ecosystem
+
+● StateSetʼs Marketplace fosters network effects: more modules → more brand value → more data → smarter AI Workers.
+
+Team & Partnerships
+
+● Pioneering AI engineers, strong alliances with NVIDIA Inception, Shopify, Gorgias, major 3PLs, and consultancies like 
+
+Accenture or Deloitte for enterprise rollouts.
+
+Outcome-First Differentiation
+
+● Competitors sell licenses or siloed software. We deliver guaranteed operational results—resonating with CFOs/COOs 
+
+managing tight budgets.
+
+Globalization Strategy
+
+● Rapid expansion into Europe, APAC, and LATAM via localized integrations and partner ecosystems.
+
+StateSet
+
+Why now?
+
+Super Intelligence Breakthroughs:
+
+We are on the cusp of super intelligence, powered by three transformative developments:
+
+● Grok 3 Supercomputer Cluster: Delivering advanced AI compute at an unprecedented scale.
+● OpenAIʼs o3 Benchmarks: Setting new performance standards in frontier mathematics, coding, and beyond.
+●
+
+$500B Investment in Project Stargate: Fueling next-generation AI capabilities in the US.
+These breakthroughs are accelerating AGI timelines and reducing the cost and complexity of automation.
+
+Revolutionizing Agentic Software & Autonomous Operations:
+Leveraging these advancements, StateSet can drive accelerated agentic software performance that enables real-time orchestration 
+across commerce, manufacturing, and autonomous operations. This positions us to build truly intelligent, autonomous workflows 
+powered by supercomputing resources and near- (or beyond-) human decision-making capabilities.
+
+Addressing Surging ECommerce Complexity:
+
+With retailers in the $10M$1B GMV range facing mounting challenges—from managing subscriptions and logistics to customer 
+experience and finance—the market demands outcome-based, streamlined automation. Our advanced AI models and 
+reasoning-based systems make it possible to handle sophisticated e-commerce tasks, creating a once-in-a-generation opportunity 
+to simplify and future-proof these operations.
+
+Scaling Enterprise Growth & Marketplace Expansion:
+
+As StateSet matures, weʼll target larger enterprise retailers and B2B operations GMVs of $100M$1B) by automating complex 
+workflows that traditionally require entire departments—unlocking $1M ACVs and exponential revenue growth. Additionally, the 
+imminent launch of our AI Worker Marketplace will empower developers to build specialized modules (e.g., last-mile logistics, 
+advanced analytics), enabling us to capture per-module fees and scale ARR dramatically.
+
+StateSet
+
+The Path to $1B
+
+1. Enterprise Growth
+
+○ Move upmarket to $100M$1B GMV retailers, commanding $1M ACVs.
+
+2. Marketplace Expansion and Scale
+
+○ Launch AI Worker marketplace, capturing per-module outcomes based fees across tens 
+
+of thousands of agents.
+
+3. Global Reach
+
+○ Enter new geographies with localized solutions, forging alliances with top-tier 
+
+implementation partners.
+
+4. Selective Acquisitions
+
+○ Acquire complementary solutions to broaden our platform
+
+5. Public Market Potential
+
+○ With large recurring revenues and 80% margins, we plan to position for an IPO in the 
+
+next 57 years.
+
+StateSet
+
+GTM Sales | Store Leads → Hubspot → Clay → Smartlead.ai
+
+Leads are obtained via 
+StoreLeads and 
+reached out to directly 
+via automated email 
+campaign.
+
+Lists are then exported 
+into HubSpot → Clay → 
+Smartlead AI for 
+Outbound eMail 
+Campaigns.
+
+StateSet
+
+https://storeleads.app/
+
+Go-to-Market Shopify App Store
+
+30,000+ in ICP
+
+StateSet on the App Store:
+
+● StateSet ReponseCX
+● StateSet Returns Automation
+
+Both Shopify applications are integrated 
+with Gorgias, Customer Service 
+Helpdesk
+
+15,000+ customers
+
+StateSet
+
+Quarterly ARR, Burn and L12M Gross Margin
+
+Q4 2030 ~18K ACV  5K customers = $100M ARR
+
+Q4 2030 S&M  R&D and GA  $2M
+
+StateSet
+StateSet
+
+Raising $8M Seed to Scale Our Autonomous Commerce OS
+
+Allocation:
+
+● Product & Engineering 40%: AI Worker 
+
+development, additional features.
+● Sales & Marketing 40%: Team 
+
+expansion, brand awareness, partner 
+growth.
+
+● Customer Success / Ops & Team 20%: 
+Key hires, administration, infrastructure.
+
+Executive Team
+
+• Founders - $150k
+• CRO  $150k
+• CMO  $150k
+• CPO  $150k
+• CFO  $150k
+
+Product & Engineering Team
+
+• Lead DevOps Architect - $75k
+• 2x Shopify Software Engineer - $60k
+• 2x React Front-End Engineer - $120k
+• 2x Lead Product Designer for StateSet - $100k
+• Cloud Security Engineer - $100k
+
+Partnerships Team
+
+●
+●
+●
+●
+●
+
+NVIDIA Inception
+Netsuite / Shopify Platforms Lead
+3PLs 
+Apps 
+Agencies
+
+  Sales and Marketing Team 
+
+• Marketing Team with Shopify App Ecosystem - $120k
+
+○
+
+Growth Center
+
+■
+■
+
+Dedicated Marketing for StateSet RMA
+Dedicated Marketing for StateSet ReSponse
+
+• Head of Sales | Revenues Leader within DTC eCommerce - $120k
+
+Customer Support 
+
+●
+
+3x Customer Success Engineer - $80k
+
+ Infra / Admin Cost
+
+•
+•
+
+Google Cloud Platform - 50k 
+G Suite / Store Leads / Hubspot / Clerk / Heroku / Adobe / Userback / Figma - 15k
+
+StateSet
+
+20242031 Annual Recurring Revenue Outcomes
+
+Targets and Outcomes 
+
+Expected 18Month Outcomes:
+
+● Expand customers from 20 
+
+to 100.
+
+● Grow ARR to $3M by end of 
+
+2025.
+
+● Launch new AI-powered 
+features for expansions
+
+● Position for a strong Series A 
+
+in 2025.
+
+StateSet
+
+Our Vision
+
+The Agentic Operating System for $10M+ GMV e-commerce brands. 
+Ultimately, transform global commerce operations and create the 
+category-defining Agentic OS for the next generation of business.
+
+We estimate that the total market opportunity addressed by this category is $163.6 billion in 2022, growing at a 3 year CAGR of 9.6% to $215.5 billion by 2025 -  
+Bank of America Merrill Lynch
+
+StateSet
+
+
