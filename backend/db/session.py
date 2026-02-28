@@ -1,15 +1,14 @@
 from __future__ import annotations
-import os
-from pathlib import Path
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-from fastapi import Depends
+
+from backend.settings import settings
 
 # ---------------------------------------------------------------------------
 # Database URL & engine
 # ---------------------------------------------------------------------------
-DEFAULT_URL = "sqlite:///./synthetic_data.db"
-DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_URL)
+DATABASE_URL = settings.database_url
 
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 

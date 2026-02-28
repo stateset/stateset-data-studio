@@ -185,6 +185,10 @@ cd frontend && npm test
 python run_api_tests.py
 ```
 
+Notes:
+- `pytest` collects deterministic unit/integration tests only.
+- Legacy manual validation scripts in `tests/` remain runnable directly with `python <script>.py` and are excluded from CI collection.
+
 ### Writing Tests
 
 - Place tests in the `tests/` directory

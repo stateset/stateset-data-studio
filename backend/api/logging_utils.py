@@ -6,13 +6,33 @@ import functools
 import inspect
 import logging
 import time
-from typing import Any, Callable, Dict, List, Optional, Union, TypeVar, cast
+from typing import Any, Callable, Dict, List, Optional, Union, TypeVar, cast, get_type_hints
 
 # Create a dedicated logger for API endpoints
 endpoint_logger = logging.getLogger("api.endpoints")
 
 # Type variable for generic function decorator
 F = TypeVar('F', bound=Callable[..., Any])
+WRAPS_ASSIGNED = tuple(
+    attr for attr in functools.WRAPPER_ASSIGNMENTS if attr != "__annotations__"
+)
+
+
+def _resolve_signature(func: Callable[..., Any]) -> inspect.Signature:
+    signature = inspect.signature(func)
+    try:
+        hints = get_type_hints(func, globalns=func.__globals__, include_extras=True)
+    except Exception:
+        hints = {}
+
+    params = []
+    for name, param in signature.parameters.items():
+        params.append(param.replace(annotation=hints.get(name, param.annotation)))
+
+    return signature.replace(
+        parameters=params,
+        return_annotation=hints.get("return", signature.return_annotation),
+    )
 
 def log_endpoint_call(func: F) -> F:
     """
@@ -25,7 +45,7 @@ def log_endpoint_call(func: F) -> F:
     
     For FastAPI endpoints, it will properly log request information.
     """
-    @functools.wraps(func)
+    @functools.wraps(func, assigned=WRAPS_ASSIGNED)
     async def async_wrapper(*args: Any, **kwargs: Any) -> Any:
         # Get the function name and module
         func_name = func.__name__
@@ -86,7 +106,7 @@ def log_endpoint_call(func: F) -> F:
             # Re-raise the exception
             raise
             
-    @functools.wraps(func)
+    @functools.wraps(func, assigned=WRAPS_ASSIGNED)
     def sync_wrapper(*args: Any, **kwargs: Any) -> Any:
         # Get the function name and module
         func_name = func.__name__
@@ -148,6 +168,10 @@ def log_endpoint_call(func: F) -> F:
             raise
             
     # Return the appropriate wrapper based on whether the function is async or not
+    resolved_signature = _resolve_signature(func)
+    async_wrapper.__signature__ = resolved_signature
+    sync_wrapper.__signature__ = resolved_signature
+
     if inspect.iscoroutinefunction(func):
         return cast(F, async_wrapper)
     return cast(F, sync_wrapper)

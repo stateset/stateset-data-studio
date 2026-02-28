@@ -1,14 +1,13 @@
 // pages/ProjectDetail.js
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import { api } from '../api/index';
 import { Card, Button, Table, Tag, Space, Tabs, Upload, Form, Input, Select, InputNumber, Alert, Modal, Spin, Typography } from 'antd';
-import { UploadOutlined, LinkOutlined, FileTextOutlined, AppstoreOutlined, FilterOutlined, SaveOutlined, DownloadOutlined } from '@ant-design/icons';
+import { UploadOutlined, LinkOutlined, FileTextOutlined, FilterOutlined, SaveOutlined, DownloadOutlined } from '@ant-design/icons';
 import toast from 'react-hot-toast';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
-const { TextArea } = Input;
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
@@ -29,12 +28,7 @@ const ProjectDetail = () => {
   const [previewContent, setPreviewContent] = useState(null);
   const [previewLoading, setPreviewLoading] = useState(false);
   
-  // Helper function to safely handle arrays
-  const safeArray = (arr) => {
-    return Array.isArray(arr) ? arr : [];
-  };
-  
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     try {
       const [projectData, jobsData] = await Promise.all([
@@ -54,11 +48,11 @@ const ProjectDetail = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [projectId]);
   
   useEffect(() => {
     fetchData();
-  }, [projectId]);
+  }, [fetchData]);
   
   const refreshJobs = async () => {
     try {
@@ -239,21 +233,7 @@ const ProjectDetail = () => {
       return;
     }
     
-    // Check if we need to add the backend/ prefix for paths
-    let adjustedPath = filePath;
-    
-    // Make sure ALL data paths include backend/ prefix for consistent handling
-    if (filePath.startsWith('data/')) {
-      adjustedPath = `${filePath}`;
-      console.log(`Adjusted input file path: ${filePath} → ${adjustedPath}`);
-    }
-    
-    // Handle absolute paths
-    if (filePath.startsWith('/home/dom/synthetic-data-studio/')) {
-      // Keep absolute paths as-is
-      adjustedPath = filePath;
-      console.log(`Using absolute path: ${adjustedPath}`);
-    }
+    const adjustedPath = filePath;
     
     console.log(`Selected output file for next step: ${adjustedPath}`);
     setSelectedFile(adjustedPath);

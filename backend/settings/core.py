@@ -1,10 +1,15 @@
 from pathlib import Path
 from typing import List
+
 from pydantic_settings import BaseSettings
+
+DEFAULT_PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_BACKEND_DIR = DEFAULT_PROJECT_ROOT / "backend"
+DEFAULT_DATA_DIR = DEFAULT_PROJECT_ROOT / "data"
 
 class Settings(BaseSettings):
     # Database settings
-    database_url: str = "sqlite:///./synthetic_data_api.db"
+    database_url: str = "sqlite:///./synthetic_data.db"
     
     # CORS settings
     cors_origins: List[str] = ["*"]
@@ -27,9 +32,9 @@ class Settings(BaseSettings):
     
     # System settings
     sdk_bin: str = "synthetic-data-kit"
-    data_dir: Path = Path("data")
-    project_root: Path = Path("/home/dom/synthetic-data-studio")
-    backend_dir: Path = Path("/home/dom/synthetic-data-studio/backend")
+    data_dir: Path = DEFAULT_DATA_DIR
+    project_root: Path = DEFAULT_PROJECT_ROOT
+    backend_dir: Path = DEFAULT_BACKEND_DIR
     
     model_config = {
         "env_file": ".env",

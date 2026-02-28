@@ -53,8 +53,13 @@ async def ingest_file(
     db: DB,
 ):
     """Upload a file (pdf, txt, docx, …) and queue an ingest job."""
-    dst_dir = files.ensure_output_dir(files.get_file_type(file.filename))
-    dst_path = dst_dir / file.filename.replace(" ", "_")
+    safe_name = files.sanitise_filename(file.filename or "upload.txt")
+    file_type = files.get_file_type(safe_name)
+    if file_type == "unknown":
+        raise HTTPException(status_code=400, detail=f"Unsupported file type: {safe_name}")
+    dst_dir = files.ensure_output_dir("uploads") / file_type
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    dst_path = dst_dir / safe_name
     with dst_path.open("wb") as fh:
         fh.write(await file.read())
 
@@ -97,9 +102,9 @@ async def create_pairs(
     background_tasks: BackgroundTasks,
     project_id: Annotated[str, Form()],
     input_file: Annotated[str, Form()],
-    qa_type: Annotated[Literal["qa", "cot", "summary", "extraction"], Form("qa")],
-    num_pairs: Annotated[Optional[int], Form(None)],
     db: DB,
+    qa_type: Annotated[Literal["qa", "cot", "summary", "extraction"], Form()] = "qa",
+    num_pairs: Annotated[Optional[int], Form()] = None,
 ):
     input_path = files.normalise_or_404(input_file)
     return JobService.queue_create(
@@ -114,14 +119,14 @@ async def create_pairs_advanced(
     background_tasks: BackgroundTasks,
     project_id: Annotated[str, Form()],
     input_file: Annotated[str, Form()],
-    qa_type: Annotated[Literal["qa", "cot", "summary", "extraction"], Form("qa")],
-    num_pairs: Annotated[Optional[int], Form(None)],
-    temperature: Annotated[Optional[float], Form(None)],
-    chunk_size: Annotated[Optional[int], Form(None)],
-    max_tokens: Annotated[Optional[int], Form(None)],
-    overlap: Annotated[Optional[int], Form(None)],
-    prompts_json: Annotated[Optional[str], Form(None)],
     db: DB,
+    qa_type: Annotated[Literal["qa", "cot", "summary", "extraction"], Form()] = "qa",
+    num_pairs: Annotated[Optional[int], Form()] = None,
+    temperature: Annotated[Optional[float], Form()] = None,
+    chunk_size: Annotated[Optional[int], Form()] = None,
+    max_tokens: Annotated[Optional[int], Form()] = None,
+    overlap: Annotated[Optional[int], Form()] = None,
+    prompts_json: Annotated[Optional[str], Form()] = None,
 ):
     input_path = files.normalise_or_404(input_file)
     return JobService.queue_create_advanced(
@@ -149,9 +154,9 @@ async def curate_pairs(
     background_tasks: BackgroundTasks,
     project_id: Annotated[str, Form()],
     input_file: Annotated[str, Form()],
-    threshold: Annotated[Optional[float], Form(None)],
-    batch_size: Annotated[Optional[int], Form(None)],
     db: DB,
+    threshold: Annotated[Optional[float], Form()] = None,
+    batch_size: Annotated[Optional[int], Form()] = None,
 ):
     input_path = files.normalise_or_404(input_file)
     return JobService.queue_curate(
@@ -165,9 +170,9 @@ async def curate_auto(
     request: Request,
     background_tasks: BackgroundTasks,
     project_id: Annotated[str, Form()],
-    threshold: Annotated[Optional[float], Form(None)],
-    batch_size: Annotated[Optional[int], Form(None)],
     db: DB,
+    threshold: Annotated[Optional[float], Form()] = None,
+    batch_size: Annotated[Optional[int], Form()] = None,
 ):
     return JobService.queue_curate_auto(
         db, project_id, threshold, batch_size, background_tasks
@@ -184,10 +189,10 @@ async def save_as(
     background_tasks: BackgroundTasks,
     project_id: Annotated[str, Form()],
     input_file: Annotated[str, Form()],
-    format: Annotated[Literal["jsonl", "alpaca", "llama", "openai", "csv", "json"], Form("jsonl")],
-    storage: Annotated[Optional[Literal["local", "s3", "azure", "gcp"]], Form(None)],
-    output_name: Annotated[Optional[str], Form(None)],
     db: DB,
+    format: Annotated[Literal["jsonl", "alpaca", "llama", "openai", "csv", "json"], Form()] = "jsonl",
+    storage: Annotated[Optional[Literal["local", "s3", "azure", "gcp"]], Form()] = None,
+    output_name: Annotated[Optional[str], Form()] = None,
 ):
     input_path = files.normalise_or_404(input_file)
     return JobService.queue_save_as(
@@ -207,11 +212,11 @@ async def save_as_auto(
     request: Request,
     background_tasks: BackgroundTasks,
     project_id: Annotated[str, Form()],
-    format: Annotated[Literal["jsonl", "alpaca", "llama", "openai", "csv", "json"], Form("jsonl")],
-    storage: Annotated[Optional[Literal["local", "s3", "azure", "gcp"]], Form(None)],
-    output_name: Annotated[Optional[str], Form(None)],
-    source_type: Annotated[Literal["curate", "create"], Form("curate")],
     db: DB,
+    format: Annotated[Literal["jsonl", "alpaca", "llama", "openai", "csv", "json"], Form()] = "jsonl",
+    storage: Annotated[Optional[Literal["local", "s3", "azure", "gcp"]], Form()] = None,
+    output_name: Annotated[Optional[str], Form()] = None,
+    source_type: Annotated[Literal["curate", "create"], Form()] = "curate",
 ):
     return JobService.queue_save_as_auto(
         db,
@@ -271,11 +276,11 @@ async def delete(request: Request, job_id: str, db: DB):
 async def list_jobs(
     db: Annotated[Session, Depends(get_db)],
     project_id: Optional[str] = None,
+    status: Optional[str] = None,
     status_param: Optional[str] = None,
     job_type: Optional[str] = None,
     skip: int = 0,
     limit: int = 100,
 ):
-    # Get the status parameter and use it correctly
-    status = status_param
-    return JobService.list_jobs(db, project_id, status, job_type, skip, limit)
+    effective_status = status if status is not None else status_param
+    return JobService.list_jobs(db, project_id, effective_status, job_type, skip, limit)

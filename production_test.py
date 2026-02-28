@@ -126,6 +126,7 @@ def wait_for_job(job_id, max_timeout=180, check_output=True):
     """Wait for a job to complete with output file verification"""
     start_time = time.time()
     interval = 3  # Check every 3 seconds
+    last_status = None
     
     logger.info(f"Waiting for job {job_id} to complete (timeout: {max_timeout}s)...")
     
@@ -138,7 +139,7 @@ def wait_for_job(job_id, max_timeout=180, check_output=True):
             status = job.get('status')
             
             # Log if status changed from last check
-            if 'last_status' not in locals() or last_status != status:
+            if last_status != status:
                 logger.info(f"Job status: {status}")
                 last_status = status
             

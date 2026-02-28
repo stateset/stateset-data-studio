@@ -1,12 +1,17 @@
 """files.py — shared helper functions (pure python, testable)"""
 from __future__ import annotations
 
-import os, shutil, subprocess, uuid, logging
-import json, os, tempfile, shutil
-from typing import Any
+import json
+import logging
+import os
+import re
+import shutil
+import subprocess
+import tempfile
 from pathlib import Path
-from typing import Literal
-from functools import lru_cache
+from typing import Any, Literal
+
+from fastapi import HTTPException
 
 from backend.settings import settings
 
@@ -22,6 +27,34 @@ ALLOWED_EXT: dict[str, str] = {
     ".md": "txt",
     ".rst": "txt",
 }
+
+
+def _data_roots() -> tuple[Path, ...]:
+    roots = {
+        settings.data_dir.resolve(),
+        (settings.backend_dir / "data").resolve(),
+    }
+    return tuple(sorted(roots, key=str))
+
+
+def _is_within_roots(path: Path) -> bool:
+    for root in _data_roots():
+        try:
+            path.relative_to(root)
+            return True
+        except ValueError:
+            continue
+    return False
+
+
+def sanitise_filename(filename: str, default: str = "upload.txt") -> str:
+    """Return a filename safe for local filesystem writes."""
+    basename = Path(filename or "").name
+    cleaned = re.sub(r"[^A-Za-z0-9._-]+", "_", basename).strip("._")
+    if not cleaned:
+        return default
+    return cleaned[:200]
+
 
 def safe_save_json(data: Any, dst: str | os.PathLike) -> str:
     """Atomically dump *data* to *dst* as UTF‑8 JSON.
@@ -50,28 +83,43 @@ def safe_save_json(data: Any, dst: str | os.PathLike) -> str:
 # ---------------------------------------------------------------------------
 
 def normalise_path(p: str | Path) -> Path:
-    """Return first existing Path variant or original Path."""
-    p = Path(p)
-    candidates: list[Path] = [p]
+    """Normalise to a path under allowed data roots."""
+    raw = str(p).strip()
+    if not raw:
+        raise HTTPException(status_code=400, detail="Path is required")
 
-    # handle `backend/` prefix variations
-    if str(p).startswith("backend/"):
-        candidates.append(settings.project_root / p.relative_to("backend"))
+    rel = raw[len("backend/") :] if raw.startswith("backend/") else raw
+
+    candidates: list[Path] = []
+    in_path = Path(rel)
+    if in_path.is_absolute():
+        candidates.append(in_path)
     else:
-        candidates.append(settings.backend_dir / p)
+        candidates.extend(
+            [
+                settings.project_root / rel,
+                settings.backend_dir / rel,
+                Path(rel),
+            ]
+        )
 
-    # absolute within project root
-    candidates.append(settings.project_root / p)
-    candidates.append(settings.backend_dir / p)
+    safe_candidates: list[Path] = []
+    for candidate in candidates:
+        resolved = candidate.expanduser().resolve(strict=False)
+        if _is_within_roots(resolved):
+            safe_candidates.append(resolved)
 
-    for c in candidates:
-        if c.exists():
-            return c.resolve()
-    return p
+    if not safe_candidates:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Path '{p}' must be within data directories",
+        )
+
+    existing = next((c for c in safe_candidates if c.exists()), None)
+    return existing or safe_candidates[0]
 
 
-def normalise_or_404(path: str | Path):  # fastapi-style helper
-    from fastapi import HTTPException
+def normalise_or_404(path: str | Path) -> str:  # fastapi-style helper
     p = normalise_path(path)
     if not p.exists():
         raise HTTPException(status_code=404, detail=f"File not found: {path}")
@@ -82,6 +130,8 @@ def normalise_or_404(path: str | Path):  # fastapi-style helper
 # ---------------------------------------------------------------------------
 
 def ensure_output_dir(label: Literal["generated", "cleaned", "final", "output", "uploads"]):
+    if label not in {"generated", "cleaned", "final", "output", "uploads"}:
+        raise ValueError(f"Invalid output dir label: {label}")
     dir_ = settings.data_dir / label
     dir_.mkdir(parents=True, exist_ok=True)
     return dir_.resolve()

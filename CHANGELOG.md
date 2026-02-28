@@ -7,17 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-02-28
+
 ### Added
-- Initial release of StateSet Data Studio
-- Web-based interface for synthetic data generation
-- Support for multiple LLM providers (Llama, OpenAI)
-- MCP (Model Control Protocol) server for AI agent integration
-- Comprehensive file format support (PDF, DOCX, TXT, HTML, YouTube)
-- Quality curation and filtering system
-- Multiple export formats (JSONL, Alpaca, ChatML, OpenAI)
-- Docker containerization
-- Frontend built with React
-- Backend built with FastAPI
+- Deterministic backend API integration tests for projects, jobs, security checks, and stalled-job recovery.
+- Frontend test scaffolding and baseline UI smoke test.
+- Compatibility shim for legacy `backend.api_extensions` imports.
+
+### Changed
+- Unified and hardened file path handling to restrict file operations to allowed data roots.
+- Sanitized upload filename handling and rejected unsupported uploaded file types.
+- Simplified frontend API client to canonical backend endpoints and removed host-specific fallback logic.
+- Updated CI to include backend import smoke tests, frontend linting, and stronger docker image validation.
+- Updated release metadata to `1.1.0` across backend/frontend/runtime manifests.
+
+### Fixed
+- Fixed route decorator annotation/signature handling that could break FastAPI startup.
+- Fixed `/system/restart-stalled-jobs` to correctly requeue supported jobs and report skipped cases.
+- Fixed ORM response serialization for project responses.
+- Fixed SDK task error handling so unexpected subprocess failures are persisted as failed jobs.
+
+### Security
+- Removed path traversal vectors from file-based job endpoints.
+- Enforced blocking backend Bandit checks in CI.
 
 ### Features
 - **Data Ingestion**: Upload documents or provide URLs for processing
@@ -82,5 +94,6 @@ Given a version number MAJOR.MINOR.PATCH, increment the:
 
 ---
 
-[Unreleased]: https://github.com/stateset/stateset-data-studio/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/stateset/stateset-data-studio/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/stateset/stateset-data-studio/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/stateset/stateset-data-studio/releases/tag/v1.0.0

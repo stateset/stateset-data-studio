@@ -63,6 +63,13 @@ class SDKService:
             db.commit()
             log.error("[SDK] command failed – %s", job.error)
             return
+        except Exception as exc:
+            job.status = "failed"
+            job.error = str(exc)
+            job.updated_at = datetime.utcnow()
+            db.commit()
+            log.exception("[SDK] command execution error")
+            return
 
         # ------------------------------------------------------------------
         # Infer / validate output file → stats

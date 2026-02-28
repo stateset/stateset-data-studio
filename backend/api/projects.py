@@ -14,7 +14,7 @@ class ProjectIn(BaseModel):
 
 @router.post("", response_model=ProjectResponse, status_code=status.HTTP_201_CREATED)
 def create_project(body: ProjectIn, db: Session = Depends(get_db)):
-    return ProjectService.create(db, **body.dict())
+    return ProjectService.create(db, **body.model_dump())
 
 @router.get("", response_model=list[ProjectResponse])
 def list_projects(db: Session = Depends(get_db)):

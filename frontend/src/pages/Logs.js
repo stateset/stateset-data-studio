@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Typography, Card, Space, Spin, Input, Select, DatePicker, Button, Table, message, Tag } from 'antd';
 import { api } from '../api/index';
 
@@ -18,7 +18,7 @@ const Logs = () => {
     total: 0,
   });
 
-  const fetchLogs = async (page = 1, pageSize = 50) => {
+  const fetchLogs = useCallback(async (page = 1, pageSize = 50) => {
     setLoading(true);
     try {
       const params = {
@@ -48,12 +48,12 @@ const Logs = () => {
       }));
       
       setLogs(formattedLogs);
-      setPagination({
-        ...pagination,
+      setPagination((prev) => ({
+        ...prev,
         current: page,
         pageSize,
         total: data.total || formattedLogs.length,
-      });
+      }));
     } catch (error) {
       console.error('Error fetching logs:', error);
       message.error('Failed to fetch server logs');
@@ -61,11 +61,11 @@ const Logs = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [dateRange, logLevel, searchText]);
 
   useEffect(() => {
-    fetchLogs(pagination.current, pagination.pageSize);
-  }, []);
+    fetchLogs(1, 50);
+  }, [fetchLogs]);
 
   const handleTableChange = (pagination) => {
     fetchLogs(pagination.current, pagination.pageSize);

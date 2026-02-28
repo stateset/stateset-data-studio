@@ -35,7 +35,7 @@ config = load_config()
 app = FastAPI(
     title="StateSet Data Studio MCP API",
     description="MCP API for StateSet Data Studio, allowing AI agents to work with synthetic data generation",
-    version="1.0.0"
+    version="1.1.0"
 )
 
 # CORS for the React dev-server

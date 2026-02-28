@@ -23,7 +23,7 @@ logger.addHandler(handler)
 # Create FastAPI app
 app = FastAPI(
     title="Minimal Synthetic Data API",
-    version="1.0.0",
+    version="1.1.0",
 )
 
 # Add CORS middleware

@@ -50,7 +50,7 @@ async def sdk_info():
     """Return SDK version + API version."""
     try:
         out = subprocess.check_output([settings.sdk_bin, "--version"], text=True)
-        return {"status": "ok", "sdk_version": out.strip(), "api_version": "1.0.0"}
+        return {"status": "ok", "sdk_version": out.strip(), "api_version": "1.1.0"}
     except Exception as exc:
         raise HTTPException(500, f"SDK error: {exc}")
 
@@ -110,7 +110,7 @@ async def update_config(body: dict):
 async def patch_generation(cfg: GenerationConfig):
     data = yaml.safe_load(CONFIG_PATH.read_text()) if CONFIG_PATH.exists() else {}
     data.setdefault("generation", {})
-    for k, v in cfg.dict(exclude_none=True).items():
+    for k, v in cfg.model_dump(exclude_none=True).items():
         data["generation"][k] = v
     CONFIG_PATH.write_text(yaml.safe_dump(data))
 
@@ -119,7 +119,7 @@ async def patch_generation(cfg: GenerationConfig):
 async def patch_curation(cfg: CurationConfig):
     data = yaml.safe_load(CONFIG_PATH.read_text()) if CONFIG_PATH.exists() else {}
     data.setdefault("curate", {})
-    for k, v in cfg.dict(exclude_none=True).items():
+    for k, v in cfg.model_dump(exclude_none=True).items():
         data["curate"][k] = v
     CONFIG_PATH.write_text(yaml.safe_dump(data))
 
@@ -183,23 +183,89 @@ async def health(db: Session = Depends(get_db)):
 
 @router.post("/restart-stalled-jobs")
 async def restart_stalled(background: BackgroundTasks, db: Session = Depends(get_db)):
-    stalled = (
-        db.query(Job).filter(Job.status == "running").all()
-    )
+    stalled = db.query(Job).filter(Job.status == "running").all()
+    restarted: list[dict[str, str]] = []
+    skipped: list[dict[str, str]] = []
+
+    def parse_cfg(job: Job) -> dict[str, Any]:
+        if not job.config:
+            return {}
+        try:
+            parsed = json.loads(job.config)
+            return parsed if isinstance(parsed, dict) else {}
+        except json.JSONDecodeError:
+            return {}
+
     for j in stalled:
-        j.status = "pending"
-        j.error = "Restarted by /system/restart-stalled-jobs"
-        db.commit()
-        background.add_task(
-            JobService.queue_create,  # noqa pseudo-code; you'd call correct queue fn
-            db,
-            j.project_id,
-            j.input_file,
-            j.job_type,
-            j.num_pairs,
-            background,
-        )
-    return {"restarted": len(stalled)}
+        cfg = parse_cfg(j)
+        try:
+            if j.job_type == "ingest":
+                input_ref = j.input_file or ""
+                if input_ref.startswith(("http://", "https://")):
+                    if "youtube.com" in input_ref or "youtu.be" in input_ref:
+                        replacement = JobService.queue_ingest_youtube(
+                            db, j.project_id, input_ref, background
+                        )
+                    else:
+                        replacement = JobService.queue_ingest_url(
+                            db, j.project_id, input_ref, background
+                        )
+                else:
+                    replacement = JobService.queue_ingest(
+                        db, j.project_id, files.normalise_or_404(input_ref), background
+                    )
+            elif j.job_type == "create":
+                replacement = JobService.queue_create(
+                    db,
+                    j.project_id,
+                    files.normalise_or_404(j.input_file or ""),
+                    cfg.get("qa_type", "qa"),
+                    cfg.get("num_pairs"),
+                    background,
+                )
+            elif j.job_type == "curate":
+                replacement = JobService.queue_curate(
+                    db,
+                    j.project_id,
+                    files.normalise_or_404(j.input_file or ""),
+                    cfg.get("threshold"),
+                    cfg.get("batch_size"),
+                    background,
+                )
+            elif j.job_type == "save-as":
+                replacement = JobService.queue_save_as(
+                    db,
+                    j.project_id,
+                    files.normalise_or_404(j.input_file or ""),
+                    cfg.get("format", "jsonl"),
+                    cfg.get("storage"),
+                    cfg.get("output_name"),
+                    background,
+                )
+            else:
+                raise HTTPException(400, f"Unsupported job type: {j.job_type}")
+
+            j.status = "failed"
+            j.error = (
+                f"Restarted by /system/restart-stalled-jobs as job {replacement.id}"
+            )
+            j.updated_at = datetime.utcnow()
+            db.commit()
+            restarted.append({"old_job_id": j.id, "new_job_id": replacement.id})
+        except HTTPException as exc:
+            j.status = "failed"
+            j.error = f"Restart skipped: {exc.detail}"
+            j.updated_at = datetime.utcnow()
+            db.commit()
+            skipped.append({"job_id": j.id, "reason": str(exc.detail)})
+        except Exception as exc:
+            j.status = "failed"
+            j.error = f"Restart failed: {exc}"
+            j.updated_at = datetime.utcnow()
+            db.commit()
+            skipped.append({"job_id": j.id, "reason": str(exc)})
+
+    return {"restarted": len(restarted), "skipped": skipped, "jobs": restarted}
 
 # ---------------------------------------------------------------------------
 # 6. Server logs

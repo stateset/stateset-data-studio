@@ -1,8 +1,7 @@
-from fastapi import APIRouter, Depends, Request
-from backend.db.session import get_db
+from fastapi import APIRouter, Request
 from datetime import datetime
-from typing import Optional, List, Callable, Any, Dict, Union, Annotated, Any
-from pydantic import BaseModel, Field
+from typing import Optional, Callable, Any, Dict
+from pydantic import BaseModel
 import logging
 import functools
 
@@ -37,6 +36,10 @@ class ProjectResponse(BaseModel):
     description: Optional[str] = None
     created_at: datetime
     updated_at: Optional[datetime] = None
+
+    model_config = {
+        "from_attributes": True
+    }
 
 class JobResponse(BaseModel):
     id: str

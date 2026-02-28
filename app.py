@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="StateSet Data Studio API",
     default_response_class=ORJSONResponse,
-    version="1.0.0",
+    version="1.1.0",
 )
 
 # Add CORS middleware
@@ -58,11 +58,12 @@ try:
     
     logger.info("Backend API mounted successfully")
 except Exception as e:
-    logger.error(f"Failed to mount backend API: {str(e)}")
+    error_message = f"Failed to mount backend API: {str(e)}"
+    logger.error(error_message)
     
     @app.get("/error")
     async def error():
-        return {"status": "error", "message": f"Failed to load backend API: {str(e)}"}
+        return {"status": "error", "message": error_message}
 
 # Import key API routes directly to ensure they're in the main app
 try:
@@ -83,8 +84,13 @@ try:
     ):
         """Alternative file upload endpoint that avoids type inference issues"""
         try:
-            dst_dir = files.ensure_output_dir(files.get_file_type(file.filename))
-            dst_path = dst_dir / file.filename.replace(" ", "_")
+            safe_name = files.sanitise_filename(file.filename or "upload.txt")
+            file_type = files.get_file_type(safe_name)
+            if file_type == "unknown":
+                return {"status": "error", "message": f"Unsupported file type: {safe_name}"}
+            dst_dir = files.ensure_output_dir("uploads") / file_type
+            dst_dir.mkdir(parents=True, exist_ok=True)
+            dst_path = dst_dir / safe_name
             with dst_path.open("wb") as fh:
                 fh.write(await file.read())
             result = JobService.queue_ingest(db, project_id, str(dst_path), background_tasks)

@@ -144,4 +144,3 @@ if __name__ == "__main__":
     else:
         print("Test failed\!")
         sys.exit(1)
-EOF < /dev/null

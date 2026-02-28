@@ -158,7 +158,11 @@ const Dashboard = () => {
             <div>
               <div className="text-sm text-gray-500 dark:text-gray-400">API Status</div>
               <div className="mt-1">
+                {systemStatus.status === 'ok' ? (
                   <Tag color="success">Connected</Tag>
+                ) : (
+                  <Tag color="error">Disconnected</Tag>
+                )}
               </div>
             </div>
             <div className="mt-4">

@@ -144,6 +144,17 @@ data/html/
 data/docx/
 data/ppt/
 data/youtube/
+backend/data/generated/
+backend/data/cleaned/
+backend/data/final/
+backend/data/uploads/
+backend/data/output/
+backend/data/txt/
+backend/data/pdf/
+backend/data/html/
+backend/data/docx/
+backend/data/ppt/
+backend/data/youtube/
 
 # IDE
 .vscode/

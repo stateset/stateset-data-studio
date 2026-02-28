@@ -10,7 +10,7 @@ from backend.api.middleware import setup_middleware
 app = FastAPI(
     title="StateSet Data Studio API",
     default_response_class=ORJSONResponse,
-    version="1.0.0",
+    version="1.1.0",
 )
 
 # Setup all middleware including CORS

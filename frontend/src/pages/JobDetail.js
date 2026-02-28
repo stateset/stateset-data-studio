@@ -1,11 +1,11 @@
 // pages/JobDetail.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Card, Descriptions, Alert, Spin, Button, Tag, Typography, Divider, Collapse } from 'antd';
+import { Card, Descriptions, Alert, Spin, Button, Tag, Typography, Collapse } from 'antd';
 import { api } from '../api/index';
 import { ArrowLeftOutlined, DownloadOutlined, CheckCircleOutlined, CloseCircleOutlined, SyncOutlined } from '@ant-design/icons';
 
-const { Title, Text, Paragraph } = Typography;
+const { Title } = Typography;
 const { Panel } = Collapse;
 
 const JobDetail = () => {
@@ -17,7 +17,7 @@ const JobDetail = () => {
   const [fileContent, setFileContent] = useState(null);
   const [contentLoading, setContentLoading] = useState(false);
   
-  const fetchJob = async () => {
+  const fetchJob = useCallback(async () => {
     setLoading(true);
     try {
       const jobData = await api.getJob(jobId);
@@ -36,20 +36,19 @@ const JobDetail = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [jobId]);
   
   useEffect(() => {
     fetchJob();
-    
-    // Poll for job status updates if job is running
-    const intervalId = setInterval(() => {
-      if (job && job.status === 'running') {
-        fetchJob();
-      }
-    }, 5000);
-    
+  }, [fetchJob]);
+
+  useEffect(() => {
+    if (job?.status !== 'running') {
+      return undefined;
+    }
+    const intervalId = setInterval(fetchJob, 5000);
     return () => clearInterval(intervalId);
-  }, [jobId, job?.status]);
+  }, [job?.status, fetchJob]);
   
   const handleViewOutput = async () => {
     if (!job || !job.output_file) return;

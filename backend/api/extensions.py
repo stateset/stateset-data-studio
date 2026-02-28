@@ -58,8 +58,13 @@ async def process_file(
     
     if file:
         # Save the uploaded file
-        dst_dir = files.ensure_output_dir(files.get_file_type(file.filename))
-        dst_path = dst_dir / file.filename.replace(" ", "_")
+        safe_name = files.sanitise_filename(file.filename or "upload.txt")
+        file_type = files.get_file_type(safe_name)
+        if file_type == "unknown":
+            raise HTTPException(400, f"Unsupported file type: {safe_name}")
+        dst_dir = files.ensure_output_dir("uploads") / file_type
+        dst_dir.mkdir(parents=True, exist_ok=True)
+        dst_path = dst_dir / safe_name
         with dst_path.open("wb") as fh:
             fh.write(await file.read())
         

@@ -39,4 +39,3 @@ def check_paths():
 if __name__ == "__main__":
     print("Checking path handling...")
     check_paths()
-EOF < /dev/null

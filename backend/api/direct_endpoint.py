@@ -44,6 +44,8 @@ async def create_qa_direct(
         path = files.normalise_or_404(input_file)
         logger.info(f"Normalized path: {path}")
         return JobService.queue_create(db, project_id, path, qa_type, num_pairs, background_tasks)
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Error creating QA job: {str(e)}")
         raise HTTPException(

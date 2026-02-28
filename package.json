@@ -1,6 +1,6 @@
 {
   "name": "synthetic-data-studio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Web interface for the Synthetic Data Kit for generating high-quality synthetic datasets",
   "dependencies": {
@@ -24,8 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "lint": "eslint src --ext .js,.jsx",
+    "lint:fix": "eslint src --ext .js,.jsx --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
   "eslintConfig": {
